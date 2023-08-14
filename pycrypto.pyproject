@@ -1,0 +1,11 @@
+{
+    "files": [
+        "mainwindow.py",
+        "form.ui",
+        "my_crypto.py",
+        "thread.py",
+        "info.py",
+        "pycrypto.py",
+        "readme.md"
+    ]
+}
