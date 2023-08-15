@@ -95,6 +95,26 @@ we must add 48 extra bits because the block of data that AES can process must be
 128-bits wide. With stream ciphers, and with block ciphers used with a mode of 
 operation that transforms them into the former, this necessity lapses.
 
+## Hash algorithms
+### BLAKE2b
+This hash algorithm was developed to replace the older, but broken, MD5 and SHA1
+algorithms. Since not full RFC-compliant due to OpenSSL limitations, BLAKE2b
+doesn't accept keying, personalization and salting features. BLAKE2b is optimized
+for 64-bits systems and it's set to return a 64-byte message digest.
+
+### SHA-2
+SHA-2 (Secure Hash Algorithm) is a set of hash algorithms developed by U.S.
+NSA to replace the older SHA-1, that has not been considered secure due to its
+limited hash lenght. SHA-2 comes in three variants, depending on the lenght of
+the message digest that is returned: 256, 384, and 512 bits.
+
+### MD5
+MD5, that stands for Message Digest 5, is an hash algorithm developed by Ron Rivest
+in the '90s of the XX century. It was quickly replaced by other algorithms because
+it was soon discovered that it suffered from several structural weaknesses. From 
+then on its use was deprecated and today it is only used as a checksum for the 
+verification, for example, of data downloaded from the Internet.
+
 ## Security
 The security of a cryptographic algorithm lies in the secrecy and robustness of
 the password used to encrypt the data. The more robust the password, i.e., long
@@ -121,3 +141,5 @@ including, but not limited to, the implied warranties of merchantability and fit
 for a particular purpose. The author will not be liable for any special, incidental,
 consequential or indirect damages due to loss of data or any other reason.
 
+---
+*Last document revision on 2023/08/15*
