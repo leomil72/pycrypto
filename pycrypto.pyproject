@@ -6,6 +6,7 @@
         "thread.py",
         "info.py",
         "pycrypto.py",
-        "readme.md"
+        "readme.md",
+        "build_version.py"
     ]
 }

@@ -36,7 +36,7 @@ from ui_form import Ui_MainWindow
 # # # # # # # # # # # # # #   M A I N   C O D E   # # # # # # # # # # # # # # #
 
 closing_app = False
-APP_VERSION = "0.9"
+APP_VERSION = "1.0"
 BUILD = 11
 
 # # # # #   M A I N   W I N D O W   U I   M A N A G E M E N T   # # # # #
@@ -335,7 +335,7 @@ class MainWindow(QMainWindow):
 
     # menu Info
     def menu_info_pressed(self):
-        dlg = Info(APP_VERSION, BUILD)
+        dlg = Info(APP_VERSION)
         dlg.exec()
 
     # menu Quit

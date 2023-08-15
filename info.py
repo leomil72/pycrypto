@@ -16,14 +16,16 @@ from PySide6.QtWidgets import (
     QLabel
 )
 
+import build_version
+
 # show info about the app
 class Info(QDialog):
     """Show info about the app"""
-    def __init__(self, app_version, build):
+    def __init__(self, app_version):
         super().__init__()
         self.setWindowTitle("pyCrypto")
         self.app_version = app_version
-        self.build = build
+        self.build = build_version.read_build_version()
 
         QBtn = QDialogButtonBox.Ok
         self.buttonBox = QDialogButtonBox(QBtn)

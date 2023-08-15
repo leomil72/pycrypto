@@ -9,15 +9,19 @@
 #
 
 import struct, os  # needed to pack nonce and to access to filesystem
-import secrets  # needed to generate random numbers
+import secrets  # needed to generate secure random numbers
+
+# import crypto primitives
 from cryptography.hazmat.primitives.ciphers import (
     Cipher, algorithms, modes,
 )
 
+# import hash primitives
 from cryptography.hazmat.primitives import (
     hashes
 )
 
+# main class
 class MyCrypto():
     def __init__(self, algorithm, keysize = 0, blocksize = 0, iv_size = 0, mode = ""):
         super().__init__()
