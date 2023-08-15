@@ -129,6 +129,24 @@ The software is a "proof of concept" and should therefore not be used where real
 certified data security is required. In these cases, the use of a cryptographically
 secure algorithm, certified by the appropriate Agencies of your country, is recommended.
 
+## Usage
+To run the app, open a terminal in the directory where the .py files reside and
+write the following command:
+
+> python pycrypto.py
+
+### Dependencies
+To run the app first you need to install the following Python dependencies with
+'pip':
+
+> pip install cryptography
+
+> pip install pyside6
+
+### Qt Creator
+The app was developed using Qt Creator 11 under Manjaro Linux. Qt Creator is free
+for open source users.
+
 ## License
 This software is released under the terms of the GNU General Public License v3.0
 or later. It is allowed to derive works from this software but they must be
