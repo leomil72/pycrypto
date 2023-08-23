@@ -4,15 +4,11 @@ import os
 
 def read_build_version():
     # open input file
-    file_name = "./pycrypto.pyproject.user"
+    file_name = "./build_number"
     if (not os.path.isfile(file_name)):
-        return "(error opening version file)"
+        return "0000.0"
     file_input = open(file_name, "rb")
     file_data = file_input.readlines()
     file_input.close
-    data = str(file_data[2])
-    start = data.find(",")
-    build_date = data[start+2:]
-    end = build_date.find(".")
-    build_date = build_date[:end].replace("-", "").replace(":", "").replace("T", ".")
+    build_date = file_data[0].decode("utf-8").replace("\n", "") + "." + file_data[1].decode("utf-8").replace("\n", "")
     return build_date

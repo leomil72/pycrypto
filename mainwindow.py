@@ -37,7 +37,6 @@ from ui_form import Ui_MainWindow
 
 closing_app = False
 APP_VERSION = "1.0"
-BUILD = 11
 
 # # # # #   M A I N   W I N D O W   U I   M A N A G E M E N T   # # # # #
 class MainWindow(QMainWindow):

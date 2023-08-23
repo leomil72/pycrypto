@@ -36,7 +36,7 @@ class Info(QDialog):
         self.layout2 = QHBoxLayout()
         txt = "pyCrypto is a simple app written in Python/Qt that encrypts/\n"
         txt += "decrypts files with several cryptographic algorithms.\n\n"
-        txt += "Written by Leonardo Miliani (2023).\n\n"
+        txt += "Written by Leonardo Miliani (2023)\n\n"
         txt += "App version {} - Build {}".format(self.app_version, self.build)
         message = QLabel(txt)
         pixmap = QPixmap("./assets/pycrypto.png")
