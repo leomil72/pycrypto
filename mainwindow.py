@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         self.setWindowTitle("pyCrypto")
 
         # create menu links
@@ -340,7 +341,7 @@ class MainWindow(QMainWindow):
     # menu Quit
     def menu_quit_pressed(self):
         self.threadpool
-        widget.close()
+        self.close()
 
     # menu Run
     def menu_run_pressed(self):
