@@ -15,7 +15,7 @@ from PySide6.QtCore import (
 
 # used to send signals to custom slots
 class MySignal(QObject):
-    """Send signlas to custom slots"""
+    """Send signals to custom slots"""
     finalize = Signal(str)
     finalize_error = Signal(str)
 
