@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>345</height>
+    <height>403</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -26,7 +26,7 @@
       <x>10</x>
       <y>10</y>
       <width>651</width>
-      <height>281</height>
+      <height>331</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -42,7 +42,7 @@
         <x>10</x>
         <y>10</y>
         <width>631</width>
-        <height>231</height>
+        <height>281</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -83,7 +83,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>45</width>
+             <width>51</width>
              <height>20</height>
             </size>
            </property>
@@ -116,16 +116,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="btnChooseFile">
+          <widget class="QPushButton" name="btnClearFile">
            <property name="toolTip">
-            <string>Choose the file to encrypt/decrypt</string>
+            <string>Clear the filename</string>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>assets/icons/folder-open.png</normaloff>assets/icons/folder-open.png</iconset>
+             <normaloff>assets/icons/edit-clear.png</normaloff>assets/icons/edit-clear.png</iconset>
            </property>
           </widget>
          </item>
@@ -146,16 +146,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="btnClearFile">
+          <widget class="QPushButton" name="btnChooseFile">
            <property name="toolTip">
-            <string>Clear the filename</string>
+            <string>Choose the file to encrypt/decrypt</string>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>assets/icons/edit-clear.png</normaloff>assets/icons/edit-clear.png</iconset>
+             <normaloff>assets/icons/folder-open.png</normaloff>assets/icons/folder-open.png</iconset>
            </property>
           </widget>
          </item>
@@ -527,7 +527,7 @@
         <x>10</x>
         <y>10</y>
         <width>631</width>
-        <height>234</height>
+        <height>281</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -565,7 +565,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>10</width>
+             <width>6</width>
              <height>20</height>
             </size>
            </property>
@@ -685,16 +685,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="btnChooseHash">
+          <widget class="QPushButton" name="btnClearHashFile">
            <property name="toolTip">
-            <string>Choose file</string>
+            <string>Clear filename field</string>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>assets/icons/folder-open.png</normaloff>assets/icons/folder-open.png</iconset>
+             <normaloff>assets/icons/edit-clear.png</normaloff>assets/icons/edit-clear.png</iconset>
            </property>
           </widget>
          </item>
@@ -715,16 +715,16 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="btnClearHashFile">
+          <widget class="QPushButton" name="btnChooseHash">
            <property name="toolTip">
-            <string>Clear filename field</string>
+            <string>Choose file</string>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>assets/icons/edit-clear.png</normaloff>assets/icons/edit-clear.png</iconset>
+             <normaloff>assets/icons/folder-open.png</normaloff>assets/icons/folder-open.png</iconset>
            </property>
           </widget>
          </item>
@@ -854,7 +854,7 @@
          <item>
           <widget class="QLabel" name="label_8">
            <property name="text">
-            <string>Hash</string>
+            <string>Hash:</string>
            </property>
           </widget>
          </item>
@@ -868,7 +868,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>40</width>
+             <width>34</width>
              <height>20</height>
             </size>
            </property>
@@ -919,6 +919,277 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Password generator</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>631</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="leftMargin">
+        <number>8</number>
+       </property>
+       <property name="topMargin">
+        <number>8</number>
+       </property>
+       <property name="rightMargin">
+        <number>8</number>
+       </property>
+       <property name="bottomMargin">
+        <number>8</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="lblPasswordSize">
+           <property name="text">
+            <string>Size: 16 chars (128 bits)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="sldPasswordSize">
+           <property name="mouseTracking">
+            <bool>false</bool>
+           </property>
+           <property name="tabletTracking">
+            <bool>false</bool>
+           </property>
+           <property name="minimum">
+            <number>8</number>
+           </property>
+           <property name="maximum">
+            <number>32</number>
+           </property>
+           <property name="sliderPosition">
+            <number>16</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="tickPosition">
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+           <property name="tickInterval">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="ckbUppercase">
+           <property name="text">
+            <string>Uppercase chars</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ckbLowercase">
+           <property name="text">
+            <string>Lowercase chars</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ckbNumbers">
+           <property name="text">
+            <string>Numbers</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ckbMisc">
+           <property name="text">
+            <string>Misc. chars</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_24">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnGeneratePassword">
+           <property name="text">
+            <string>Generate Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_27">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="lblGeneratedPassword">
+           <property name="text">
+            <string>Password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtGeneratedPassword">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_30">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>5</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnCopyPassword">
+           <property name="toolTip">
+            <string>Copy to clipboard</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>assets/icons/edit-copy.png</normaloff>assets/icons/edit-copy.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_28">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblSecurityLevel">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#5b636b;&quot;&gt;Security: n.a.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_29">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -927,7 +1198,7 @@
      <x>0</x>
      <y>0</y>
      <width>674</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

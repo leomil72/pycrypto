@@ -159,5 +159,8 @@ including, but not limited to, the implied warranties of merchantability and fit
 for a particular purpose. The author will not be liable for any special, incidental,
 consequential or indirect damages due to loss of data or any other reason.
 
+## Changelog
+* 1.0: first release
+* 1.1: added password generator
 ---
-*Last document revision on 2023/08/15*
+**Last document revision on 2025-07-01**

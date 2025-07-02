@@ -2,7 +2,7 @@
 
 # This file is part of pyCrypto, an encryption/decryption/hashing
 # app developed in Python and based on PySide6
-# Written by Leonardo Miliani in 2023
+# Written by Leonardo Miliani in 2023~2025
 # Released under the terms of the GNU General Public License v3.0 or later
 #
 # Please read the readme file for instructions and details
@@ -10,21 +10,26 @@
 
 # # # # # # #   L I B R A R I E S / M O D U L E S   I M P O R T   # # # # # # #
 
-import os.path, time
+import os.path
+import time
+import random
 
 from PySide6.QtWidgets import (
     QApplication, QMainWindow,
     QFileDialog, QMessageBox
 )
 
+from PySide6.QtGui import QFont
+
 from PySide6.QtCore import (
     QThreadPool
 )
 
 # custom libraries
-from my_crypto import MyCrypto
-from thread import MySignal, Worker
-from info import Info
+from src.my_crypto import MyCrypto
+from src.thread import MySignal, Worker
+from src.info import Info
+from src.utils import Utils
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -36,7 +41,7 @@ from ui_form import Ui_MainWindow
 # # # # # # # # # # # # # #   M A I N   C O D E   # # # # # # # # # # # # # # #
 
 closing_app = False
-APP_VERSION = "1.0"
+APP_VERSION = "1.1"
 
 # # # # #   M A I N   W I N D O W   U I   M A N A G E M E N T   # # # # #
 class MainWindow(QMainWindow):
@@ -86,6 +91,12 @@ class MainWindow(QMainWindow):
         rdbFile_radio.clicked.connect(self.rdbFile_radio_pressed)
         copy_digest = self.ui.btnCopyHash
         copy_digest.clicked.connect(self.copy_to_clipboard)
+
+        # connect signal/slot for widgets related to Password Generation
+        run_generate_password_btn = self.ui.btnGeneratePassword
+        run_generate_password_btn.clicked.connect(self.btn_generate_password_pressed)
+        copy_password = self.ui.btnCopyPassword
+        copy_password.clicked.connect(self.copy_password_to_clipboard)
 
         # create thread pool
         self.threadpool = QThreadPool()
@@ -282,6 +293,65 @@ class MainWindow(QMainWindow):
         worker = Worker(program)
         # start the thread
         self.threadpool.start(worker)
+
+# # # # #   P A S S W O R D   G E N E R A T O R    F U N C T I O N S   # # # # #
+
+    def btn_generate_password_pressed(self):
+        upperCase = self.ui.ckbUppercase.isChecked()
+        lowerCase = self.ui.ckbLowercase.isChecked()
+        numbers = self.ui.ckbNumbers.isChecked()
+        miscellanous = self.ui.ckbMisc.isChecked()
+        chksum = 1 if upperCase else 0
+        chksum += 1 if lowerCase else 0
+        chksum += 1 if numbers else 0
+        chksum += 1 if miscellanous else 0
+        if chksum == 0:
+            self.showDiagErr("Please choose at least one group\n" \
+            "of characters to generate a password.")
+        else:
+            lenght = self.ui.sldPasswordSize.value()
+            chars = ""
+            chars += Utils.uppercaseChars if upperCase else ""
+            chars += Utils.lowercaseChars if lowerCase else ""
+            chars += Utils.numberChars if numbers else ""
+            chars += Utils.miscChars if miscellanous else ""
+            password = ""
+            for i in range(lenght):
+                password += random.choice(chars)
+            self.ui.txtGeneratedPassword.setText(password)
+            self.evaluatePassword()
+
+    # copy password to clipboard
+    def copy_password_to_clipboard(self):
+        if self.ui.txtGeneratedPassword.text() != "":
+            clipboard = QApplication.clipboard()
+            clipboard.setText(self.ui.txtGeneratedPassword.text())
+            self.showDialog("Password copied to clipboard", QMessageBox.Information)
+
+    # evaluate password robustness
+    def evaluatePassword(self):
+        index = 0
+        sz = self.ui.sldPasswordSize.value()
+        # check lenght of password
+        index = (sz // 4) - 1
+        # check presence of several group of chars
+        secIndex = 0
+        if self.ui.ckbUppercase.isChecked(): secIndex += 1
+        if self.ui.ckbLowercase.isChecked(): secIndex += 1
+        if self.ui.ckbNumbers.isChecked(): secIndex += 1
+        if self.ui.ckbMisc.isChecked(): secIndex += 1
+        # is there only one group?
+        if secIndex == 1: secIndex = -1
+        index += secIndex
+        font = QFont()
+        font.setBold(True)
+        font.setPointSize(12)
+        self.ui.lblSecurityLevel.setStyleSheet(f'color:#{Utils.robustness[index][1]};')
+        self.ui.lblSecurityLevel.setFont(font)
+
+        self.ui.lblSecurityLevel.setText(Utils.robustness[index][0])
+        #securityCheck.color = '${Utils.security[index][1]}';
+
 
 # # # # # # #   G E N E R I C    S L O T S / F U N C T I O N S   # # # # # # #
 
