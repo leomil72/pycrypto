@@ -217,6 +217,11 @@
              <string>ChaCha20</string>
             </property>
            </item>
+           <item>
+            <property name="text">
+             <string>Speck</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item>

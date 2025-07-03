@@ -121,6 +121,7 @@ class Ui_MainWindow(object):
         self.cmbAlgorithm.addItem("")
         self.cmbAlgorithm.addItem("")
         self.cmbAlgorithm.addItem("")
+        self.cmbAlgorithm.addItem("")
         self.cmbAlgorithm.setObjectName(u"cmbAlgorithm")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -604,6 +605,7 @@ class Ui_MainWindow(object):
         self.cmbAlgorithm.setItemText(1, QCoreApplication.translate("MainWindow", u"CAST5", None))
         self.cmbAlgorithm.setItemText(2, QCoreApplication.translate("MainWindow", u"Camellia", None))
         self.cmbAlgorithm.setItemText(3, QCoreApplication.translate("MainWindow", u"ChaCha20", None))
+        self.cmbAlgorithm.setItemText(4, QCoreApplication.translate("MainWindow", u"Speck", None))
 
 #if QT_CONFIG(tooltip)
         self.cmbAlgorithm.setToolTip(QCoreApplication.translate("MainWindow", u"Select an algorithm", None))

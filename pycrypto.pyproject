@@ -9,6 +9,7 @@
         "src/thread.py",
         "src/loadModules.py",
         "src/mainwindow.py",
-        "src/my_crypto.py"
+        "src/my_crypto.py",
+        "src/speckCipher.py"
     ]
 }

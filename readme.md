@@ -71,6 +71,22 @@ have been introduced: ChaCha20 can only be used with 256-bits keys. Since ChaCha
 is a stream algorithm, there is no need to select an mode of operation as in the 
 case of other algorithms, that are block ciphers.
 
+### Speck
+The Speck is a family of lightweight block ciphers publicly released by the
+National Security Agency (NSA) in June 2013. Speck has been optimized for
+performance in software implementations, while its sister algorithm, Simon,
+has been optimized for hardware implementations. Technically speaking, the 
+Speck64/128 is a block cipher, meaning that it works with fixed-width blocks 
+of data to be encrypted/decrypted. The "64/128" in its name stands for the 
+main characteristics of the algorithm: the block is 64-bits wide, while the 
+key is 128-bits wide. The algorithms is based on the so-called ARX scheme. 
+ARX stands for Add-Rotate-Xor, indicating the 3 main operations involed, 
+the modular addition, the fixed rotation amounts, and the XOR. Due to the 
+limitations of the language and to keep the implementation as simple
+as possible, the 64/128 version of the cipher is implemented. The algorithm
+is set to work in OFB, Output FeedBack, a mode of operation that turns a 
+block cipher into a stream cipher. 
+
 ## Mode of operations
 Wikipedia says: "A block cipher by itself is only suitable for the secure cryptographic 
 transformation (encryption or decryption) of one fixed-length group of bits called 
@@ -162,5 +178,6 @@ consequential or indirect damages due to loss of data or any other reason.
 ## Changelog
 * 1.0: first release
 * 1.1: added password generator
+* 1.2: added Speck cipher
 ---
-**Last document revision on 2025-07-01**
+**Last document revision on 2025-07-03**

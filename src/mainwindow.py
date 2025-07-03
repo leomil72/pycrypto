@@ -30,6 +30,7 @@ from src.my_crypto import MyCrypto
 from src.thread import MySignal, Worker
 from src.info import Info
 from src.utils import Utils
+from src.speckCipher import SpeckCipher
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -41,7 +42,7 @@ from ui_form import Ui_MainWindow
 # # # # # # # # # # # # # #   M A I N   C O D E   # # # # # # # # # # # # # # #
 
 closing_app = False
-APP_VERSION = "1.1"
+APP_VERSION = "1.2"
 
 # # # # #   M A I N   W I N D O W   U I   M A N A G E M E N T   # # # # #
 class MainWindow(QMainWindow):
@@ -202,12 +203,19 @@ class MainWindow(QMainWindow):
             self.ui.cmbKeysize.setEnabled(True)
             self.ui.cmbMode.setEnabled(True)
             self.ui.passwordField.setStatusTip("Camellia cipher with 128/192/256 bits (16/24/32 chars) password")
-        else:
+        elif index == 3:
             # Chacha20: set keysize to 256 and disable mode
             self.ui.cmbKeysize.setCurrentIndex(2)
             self.ui.cmbKeysize.setEnabled(False)
             self.ui.cmbMode.setEnabled(False)
             self.ui.passwordField.setStatusTip("ChaCha20 cipher with 256 bits (32 chars) password")
+        else:
+            # Speck
+            self.ui.cmbKeysize.setCurrentIndex(0) # 128 bits
+            self.ui.cmbKeysize.setEnabled(False)
+            self.ui.cmbMode.setCurrentIndex(0) # OFB
+            self.ui.cmbMode.setEnabled(False)
+            self.ui.passwordField.setStatusTip("Speck cipher with 128 bits (16 chars) password - OFB mode")
 
 
 
@@ -240,11 +248,17 @@ class MainWindow(QMainWindow):
             elif cipher_algorithm == "ChaCha20":
                 iv_size = 128
                 block_size = 128
+            elif cipher_algorithm == "Speck":
+                iv_size = 32
+                block_size = 64
             else: # CAST5
                 iv_size = 64
                 block_size = 64
             # initialize cipher primitive
-            cipher = MyCrypto(cipher_algorithm, cipher_keysize, block_size, iv_size, cipher_mode)
+            if cipher_algorithm == "Speck":
+                cipher = SpeckCipher()
+            else:
+                cipher = MyCrypto(cipher_algorithm, cipher_keysize, block_size, iv_size, cipher_mode)
             # key padding
             key = cipher.padding(tempKey, cipher_keysize // 8, truncate = True)
             keyList = list(key)
