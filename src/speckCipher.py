@@ -108,9 +108,7 @@ class SpeckCipher:
                 # ...except for the last one, that is padded
                 if endIndex == fileSize:
                     # get the lenght of padding
-                    print(decBlock[7], chr(decBlock[7]))
                     lnpd = decBlock[7]
-                    print(lnpd)
                     # remove the extra bytes and write the remaining data
                     while lnpd > 0:
                         decBlock.pop()
@@ -126,19 +124,19 @@ class SpeckCipher:
     def Rol(self, x, r):
         tmp = (x >> (self.WORD_SIZE_N - r)) & 0x00000000ffffffff
         return (((x << r) | tmp) & 0x00000000ffffffff)
-    
-    
+
+
     # 32-bits right rotation function
     def Ror(self, x, r):
        tmp = (x << (self.WORD_SIZE_N - r)) & 0x00000000ffffffff
        return (((x >> r) | tmp) & 0x00000000ffffffff)
-    
+
 
     # initialization vector: returns two random 32-bits integer
     def generateIV(self):
         return[secrets.randbits(32), secrets.randbits(32)]
 
-    
+
     # convert blocks of 4 bytes into 32-bits words using little-endian order:
     # first byte into the right-most 8-bits, and so on up to the left
     def bytesToWord32(self, inBytes):
@@ -149,7 +147,7 @@ class SpeckCipher:
             outWords[j] = inBytes[i] | (inBytes[i + 1] << 8) | (inBytes[i + 2] << 16) | (inBytes[i + 3] << 24)
             j += 1
         return outWords
-    
+
 
     # revert a 32-bits word into 4 bytes using little-endian order:
     # right-most 8-bits into the first byte, and so on up to the left
@@ -164,7 +162,7 @@ class SpeckCipher:
             outBytes[j + 3] = (inWords[i] >> 24) & 0xff
             j += 4
         return outBytes
-    
+
     # key scheduler: gets a key and prepare a round key buffer
     def keySchedule(self, key):
         subKey = [0] * self.ROUNDS
@@ -208,7 +206,7 @@ class SpeckCipher:
         cipherText[0] = plainText[0] ^ initVect[0]
         cipherText[1] = plainText[1] ^ initVect[1]
         return cipherText
-  
+
 
     # decrypt a block using the round key and the IV, and returns a decrypted block
     def decrypt(self, CipherText, roundKey, initVect):
@@ -223,7 +221,7 @@ class SpeckCipher:
         plainText[0] = cipherText[0] ^ initVect[0]
         plainText[1] = cipherText[1] ^ initVect[1]
         return plainText
-  
+
 
     # string padding
     def padding(self, txt, lng, truncate = False):
@@ -244,12 +242,12 @@ class SpeckCipher:
         if len(val) == lng:
             # return passed string if lenght is correct
             res = val.copy()
-        elif len(txt) > lng:
+        elif len(val) > lng:
             # return 'lng' chars if string is longer
             res = val[:lng]
         else:
             # padd string if string is shorter with 'lng'
-            diff = lng -len(val)
+            diff = lng - len(val)
             res = val.copy()
             while len(res) < lng:
                 res.append(diff)
